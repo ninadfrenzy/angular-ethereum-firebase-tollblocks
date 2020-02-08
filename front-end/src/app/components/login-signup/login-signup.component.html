@@ -1,0 +1,184 @@
+<div class="maindiv">
+    <div class="containerz" id="container">
+      <div class="form-container sign-up-container">
+        <form>
+          <h1>Create Account</h1>
+          <div class="field has-text-centered" style="padding-top:2%;">
+            <button
+              class=" is-link is-outlined is-rounded is-active"
+              (click)="toggleFormCustomer()"
+            >
+              New Customer
+            </button>
+  
+            <button
+              class=" is-link is-outlined is-rounded"
+              (click)="toggleFormAuthority()"
+            >
+              Toll Operator
+            </button>
+          </div>
+          <!-- Form for sign up customer -->
+          <div class="user-form" *ngIf="userType === 'customer'">
+            <div>
+              <input
+                type="text"
+                
+                name="customerName"
+                placeholder="Name"
+                [(ngModel)]="customerName"
+                #cname="ngModel"
+                required
+              />
+              <div class="ermsg" *ngIf="cname.touched && cname.invalid">
+                this field is required 
+              </div>
+            </div>
+  
+            <input
+              type="email"
+              name="customerEmail"
+              placeholder="Email"
+              [(ngModel)]="customerEmail"
+              required
+              #eml="ngModel"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+  
+            />
+            <div class="ermsg" *ngIf="eml.touched && eml.invalid">
+              <div *ngIf="eml.errors.required"> this field is required </div>
+              <div *ngIf="eml.errors.pattern">not a valid email</div>
+            </div>
+            <input
+              type="password"
+              name="customerPasswordForSignUp"
+              placeholder="Password"
+              [(ngModel)]="customerPasswordForSignUp"
+              required
+              minlength="6"
+              #pwd="ngModel"
+  
+            />
+            <input
+              type="password"
+              name="customerConfPasswordForSignUp"
+              placeholder=" Confirm Password"
+              [(ngModel)]="customerConfPasswordForSignUp"
+              required
+              #cfpwd="ngModel"
+            />
+  
+            <div class="ermsg" *ngIf="cfpwd.touched && cfpwd.invalid">
+              <div *ngIf="cfpwd.errors.required"> this field is required </div>
+              <div *ngIf="cfpwd != pwd">passwords dont match</div>
+              
+            </div>
+  
+          </div>
+          <div class="user-form" *ngIf="userType === 'tollauthority'">
+            <input
+              type="text"
+              name="authorityName"
+              placeholder="Name of Authority"
+              [(ngModel)]="authorityName"
+              #aname="ngModel"
+              required
+            />
+            <div class="ermsg" *ngIf="aname.touched && aname.invalid">
+              <div *ngIf="aname.errors.required"> this field is required </div>
+              
+            </div>
+  
+            <input
+              type="email"
+              name="authorityEmail"
+              placeholder="Email"
+              [(ngModel)]="authorityEmail"
+              #aeml="ngModel"
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            />
+            <div class="ermsg" *ngIf="aeml.touched && aeml.invalid">
+              <div *ngIf="aeml.errors.required"> this field is required </div>
+              <div *ngIf="aeml.errors.pattern">not a valid email</div>
+            </div>
+            <input
+              type="password"
+              name="authorityPasswordForSignUp"
+              placeholder="Password"
+              [(ngModel)]="authorityPasswordForSignUp"
+              #apwd="ngModel"
+              minlength="6"
+              required
+            />
+            <div class="ermsg" *ngIf="apwd.touched && apwd.invalid">
+              <div *ngIf="apwd.errors.required"> this field is required </div>
+              <div *ngIf="apwd.errors.minlength"> password should be more than 6 characters </div>
+            </div>
+            <input
+              type="password"
+              name="authorityConfPasswordForSignUp"
+              placeholder=" Confirm Password"
+              [(ngModel)]="authorityConfPasswordForSignUp"
+              #acpwd="ngModel"
+              required
+            />
+            <div class="ermsg" *ngIf="acpwd.touched && acpwd.invalid">
+              <div *ngIf="acpwd.errors.required"> this field is required </div>
+              <div *ngIf="acpwd === apwd">passwords dont match</div>
+            </div>
+          </div>
+          <button *ngIf="userType" (click) = "signUp()">
+            Sign Up
+          </button>
+
+        </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <form action="#">
+          <h1>Sign in</h1>
+  
+          <input
+            type="email"
+            placeholder="Email"
+            [(ngModel)]="userEmailForLogin"
+            name="emailforlogin"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            [(ngModel)]="userPasswordForLogin"
+            name="passwordforlogin"
+          />
+          <a href="#">Forgot your password?</a>
+          <span
+            style="display: none; color: red; padding-bottom: 2%;"
+            id="errlogin"
+            >Incorrect credentials!</span
+          >
+          <button (click) = logIn()>Sign In</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>
+              To keep connected with us please login with your personal
+              information
+            </p>
+            <button class="ghost" id="signIn" (click)="toggleSignIn()">
+              Sign In
+            </button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Are you a new user?</h1>
+            <p>Enter your personal details and start your journey with us</p>
+            <button class="ghost" id="signUp" (click)="toggleSignUp()">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

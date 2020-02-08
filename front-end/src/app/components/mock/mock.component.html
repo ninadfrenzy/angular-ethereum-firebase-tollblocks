@@ -1,0 +1,7 @@
+<div *ngIf="authService.uid | async as uid;else logout">
+    uid - {{uid}}
+    <button (click) = "afAuth.auth.signOut()">logout</button>
+</div>
+<ng-template #logout>
+    not logged in sorry
+</ng-template>

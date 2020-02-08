@@ -1,0 +1,72 @@
+<section class="section page-form">
+    <!-- !!!!!!!!!!!!!!!!!!!!   Heading + notification + subheading !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6 is-offset-3">
+          <h1 class="is-size-1 font-is-poppins">Login</h1>
+        </div>
+        <div class="column is-3">
+          <div class="notification is-danger" id="notification-fail">
+            <button class="delete" (click) = "hideNotifications()"></button>
+            <p>
+              Incorrect Credentials
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- !!!!!!!!!!!!!!!!!!!!   Main Card  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-6">
+          <div class="card card-form">
+            <div class="card-content">
+              <div class="field">
+                <label class="label font-is-roboto">Email</label>
+                <div class="control has-icons-left">
+                  <input
+                    class="input"
+                    type="text"
+                    [(ngModel)] = "email"
+                    placeholder="email@example.com"
+                  />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-at"></i>
+                  </span>
+                </div>
+                <p class="help"></p>
+              </div>
+              <div class="field">
+                  <label class="label font-is-roboto">Password</label>
+                  <div class="control has-icons-left">
+                    <input
+                      class="input"
+                      type="password"
+                      [(ngModel)] = "password"
+                      placeholder="Password"
+                    />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-key"></i>
+                    </span>
+                  </div>
+                  <p class="help"></p>
+                </div>
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox" [(ngModel)]="isOperator">
+                        I am an operator
+                      </label>
+                </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button" (click) = "login()">
+                    Login
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

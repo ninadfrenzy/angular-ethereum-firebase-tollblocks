@@ -1,0 +1,10 @@
+<div *ngIf="usertype=='tollauthority'">
+    {{authService.uid | async}}
+    <app-dashboard-authority></app-dashboard-authority>
+</div>
+<div *ngIf="usertype=='customer'">
+    {{authService.uid | async}}
+    <app-dashboard-customer></app-dashboard-customer>
+</div>
+
+

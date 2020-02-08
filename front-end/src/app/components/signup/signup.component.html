@@ -1,0 +1,137 @@
+<section class="section page-form">
+    <!-- !!!!!!!!!!!!!!!!!!!!   Heading + notification + subheading !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6 is-offset-3">
+          <h1 class="is-size-1 font-is-poppins">Signup</h1>
+        </div>
+        <div class="column is-3">
+          <div class="notification is-success" id="notification-success">
+            <button class="delete" (click) = "hideNotifications()"></button>
+            <p>
+              Successful
+            </p>
+          </div>
+          <div class="notification is-danger" id="notification-fail">
+            <button class="delete" (click) = "hideNotifications()"></button>
+            <p>
+              Failed!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- !!!!!!!!!!!!!!!!!!!!   Main Card  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-6">
+          <div class="card card-form">
+            <div class="card-content">
+              <div class="field">
+                <label class="label font-is-roboto">Name</label>
+                <div class="control has-icons-left">
+                  <input
+                    class="input"
+                    type="text"
+                    [(ngModel)] ="name"
+                    #custname = "ngModel"
+                    placeholder="Name Surname"
+                    required
+                  />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+                <p class="help" *ngIf="custname.touched && custname.invalid">Please enter a name.</p>
+              </div>
+              <div class="field">
+                <label class="label font-is-roboto">Email</label>
+                <div class="control has-icons-left">
+                  <input
+                    class="input"
+                    type="text"
+                    [(ngModel)]="email"
+                    placeholder="email@example.com"
+                    #mail="ngModel"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    required
+                  />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-at"></i>
+                  </span>
+                </div>
+                <p class="help" *ngIf="mail.touched && mail.invalid">
+                    <span *ngIf="mail.errors.required">Please enter an email</span>
+                    <span *ngIf="mail.errors.pattern">Invalid email type</span>
+                </p>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <div class="field">
+                    <label class="label font-is-roboto">Password</label>
+                    <div class="control has-icons-left">
+                      <input
+                        class="input"
+                        type="password"
+                        [(ngModel)]="password"
+                        #pwd="ngModel"
+                        placeholder="Password"
+                        required
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-key"></i>
+                      </span>
+                    </div>
+                    <p class="help">Minimum length is 8</p>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label font-is-roboto"
+                      >Confirm Password</label
+                    >
+                    <div class="control has-icons-left">
+                      <input
+                        class="input"
+                        type="password"
+                        [(ngModel)]="confirmPassword"
+                        #confpwd="ngModel"
+                        placeholder="Password"
+                        required
+                      />
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-key"></i>
+                      </span>
+                    </div>
+                    <p class="help" *ngIf="(pwd.touched && pwd.invalid) || (confpwd.touched && confpwd.invalid)">
+                        Ensure passwords are filled and match.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <label class="label">I am a </label>
+                  <label class="radio">
+                    <input type="radio" name="answer" [(ngModel)]="type" value="customer"/>
+                    Customer
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="answer" [(ngModel)]="type" value="authority"/>
+                    Toll Authority
+                  </label>
+                </div>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button" (click)="signUp()">
+                    Sign Up
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
