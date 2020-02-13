@@ -23,6 +23,8 @@ import { RoadsComponent } from './components/roads/roads.component';
 import { CollectTollComponent } from './components/collect-toll/collect-toll.component';
 import { BoothsComponent } from './components/booths/booths.component';
 import { DashboardConnectorComponent } from './components/dashboard-connector/dashboard-connector.component';
+import { Ng2OdometerModule } from 'ng2-odometer';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +41,12 @@ import { DashboardConnectorComponent } from './components/dashboard-connector/da
     RoadsComponent,
     CollectTollComponent,
     BoothsComponent,
-    DashboardConnectorComponent
+    DashboardConnectorComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
+    Ng2OdometerModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,

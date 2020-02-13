@@ -1,0 +1,40 @@
+.button{
+    background-color: rgb(52, 52, 228);
+    color: white;
+    
+}
+.card-form{
+    box-shadow: 5px 5px 20px grey;
+}
+.font-is-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+.font-is-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+.font-is-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+h1{
+    font-weight: bold;
+    
+}
+.page-reciept {
+    padding-top: 1.5rem;
+}
+.pt-0{
+    padding-top: 0;
+}
+#quick-recharge-buttons{
+    margin-top: 0.2rem;
+}
+#success-recharge{
+    display: none;
+}
+#reciept{
+    display: none;
+}
+.reciept-card {
+    box-shadow: 10px 10px 20px grey;
+    word-wrap: break-word;
+}

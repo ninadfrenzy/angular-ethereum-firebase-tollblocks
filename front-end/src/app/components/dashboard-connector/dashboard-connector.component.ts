@@ -13,9 +13,14 @@ export class DashboardConnectorComponent implements OnInit {
 
   ngOnInit() {
     this.authService.userData.subscribe(data => {
-      data.forEach(item => {
-        this.usertype = item['userType'];
-      })
+      if(data) {
+        data.forEach(item => {
+          this.usertype = item['type'];
+
+          
+          
+        })
+      }
     })
   }
 

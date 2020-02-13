@@ -1,7 +1,10 @@
 <div *ngIf="authService.uid | async as uid;else logout">
     uid - {{uid}}
+    {{roadId}}
     <button (click) = "afAuth.auth.signOut()">logout</button>
 </div>
 <ng-template #logout>
     not logged in sorry
+    <input type="text" class="input" [(ngModel)]="value">
+    <button class="button"(click) = "addUser()" >add</button>
 </ng-template>

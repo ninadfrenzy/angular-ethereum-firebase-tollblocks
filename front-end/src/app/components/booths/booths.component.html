@@ -1,1 +1,70 @@
-<p>booths works!</p>
+
+<section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column page-left page-add-vehicles">
+          <h1 class="is-size-1 is-font-poppins">
+            ADD BOOTH
+          </h1>
+          <div class="card card-form-add">
+            <div class="card-content">
+              <div class="field">
+                <label class="label font-is-roboto">Booth Username</label>
+                <div class="control ">
+                  <input class="input" type="text" placeholder="amount" [(ngModel)]="boothUsername"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label font-is-roboto">Booth Password</label>
+                <div class="control ">
+                  <input class="input" type="text" placeholder="amount" [(ngModel)]="boothPassword"/>
+                </div>
+              </div>
+
+              <div class="field">
+                <p class="control">
+                  <button class="button" (click)="addBooth()">
+                    Add
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="notification is-success">
+            <button class="delete"></button>
+            <p>
+              Successful
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <h1 class="is-size-1 is-font-poppins" id="myvehicles">
+            BOOTHS
+          </h1>
+          <div class="vehicle-cards">
+            <div class="card card-form" *ngFor="let booth of boothsArray;let i=index;">
+              <div class="card-content">
+                <div class="columns is-vcentered">
+                  <div class="column is-3 is-v-icon has-text-centered">
+                    <i class="fas fa-chalkboard-teacher vehicle-icons"></i>
+                  </div>
+                  <div class="column is-6">
+                    <h1 class="is-size-5">username: {{booth.booth_uname}}</h1>
+                    <h1 class="is-size-5"><i class="fas fa-rupee-sign"></i> {{booth.booth_collection}} collected </h1>
+                  </div>
+                  <div class="column is-3 has-text-centered">
+                    <a (click)="deleteBooth(booth.booth_id)"
+                      ><i
+                        class="far fa-times-circle vehicle-icons close-icon"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

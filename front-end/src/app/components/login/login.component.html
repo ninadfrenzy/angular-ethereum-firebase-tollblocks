@@ -51,12 +51,7 @@
                   </div>
                   <p class="help"></p>
                 </div>
-                <div class="field">
-                    <label class="checkbox">
-                        <input type="checkbox" [(ngModel)]="isOperator">
-                        I am an operator
-                      </label>
-                </div>
+
               <div class="field">
                 <p class="control">
                   <button class="button" (click) = "login()">
@@ -66,6 +61,7 @@
               </div>
             </div>
           </div>
+          <p class="login-now has-text-right" (click)="router.navigateByUrl('signup')">Don't have an account? <a>Signup Here</a></p>
         </div>
       </div>
     </div>

@@ -31,3 +31,6 @@ h1{
 .notification{
     display: none;
 }
+.login-now{
+    margin-top: 1rem;
+}

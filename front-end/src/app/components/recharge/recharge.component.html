@@ -1,1 +1,105 @@
-<p>recharge works!</p>
+
+<section class="section page-form">
+    <!-- !!!!!!!!!!!!!!!!!!!!   Heading + notification + subheading !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6 is-offset-3">
+          <h1 class="is-size-1 font-is-poppins">RECHARGE</h1>
+          <h1 class="is-size-5 font-is-poppins">
+            Previous Balance: <i class="fas fa-rupee-sign"></i> 
+            <b><ng2-odometer [number]="previousAmount" [config]="{}"></ng2-odometer></b>
+          </h1>
+        </div>
+        <div class="column is-3">
+          <div class="notification is-success" id="success-recharge">
+            <button class="delete" (click)="hideNotification()"></button>
+            <p>
+              Successful
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- !!!!!!!!!!!!!!!!!!!!   Main Card  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-6">
+          <div class="card card-form">
+            <div class="card-content">
+              <div class="field">
+                <label class="label font-is-roboto">Amount</label>
+                <div class="control has-icons-left">
+                  <input class="input" type="text" placeholder="amount" [(ngModel)]="rechargeAmount" />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-rupee-sign"></i>
+                  </span>
+                </div>
+                <p class="help">Minimum value is 100.</p>
+                <div id="quick-recharge-buttons" class="buttons">
+                  <button class="button is-small is-primary is-outlined" (click)="putValueInRechargeInput(100)">
+                    <i class="fas fa-rupee-sign"></i> 100
+                  </button>
+                  <button class="button is-small is-primary is-outlined" (click)="putValueInRechargeInput(200)">
+                    <i class="fas fa-rupee-sign"></i> 200
+                  </button>
+                  <button class="button is-small is-primary is-outlined" (click)="putValueInRechargeInput(500)">
+                    <i class="fas fa-rupee-sign"></i> 500
+                  </button>
+                </div>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button" (click)="userRecharge()">
+                    Recharge
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section page-reciept" id="reciept">
+    <!-- !!!!!!!!!!!!!!!!!!!!   Reciept section  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-6">
+          <h1 class="is-size-2 is-font-poppins">RECIEPT</h1>
+          <div class="card reciept-card">
+            <div class="card-title"></div>
+            <div class="card-content">
+              <div class="columns">
+                <div class="column is-4">
+                  <i class="fas fa-chevron-right"></i>
+                  <strong>Txn Sender</strong>
+                </div>
+                <div class="column is-8">{{this.txnSender}}</div>
+              </div>
+              <div class="columns">
+                <div class="column is-4 pt-0">
+                  <i class="fas fa-chevron-right"></i>
+                  <strong>Txn Reciever</strong>
+                </div>
+            <div class="column is-8 pt-0">{{this.txnReciever}}</div>
+              </div>
+              <div class="columns">
+                <div class="column is-4 pt-0">
+                  <i class="fas fa-chevron-right"></i>
+                  <strong>Txn Hash</strong>
+                </div>
+                <div class="column is-8 pt-0">{{this.txnHash}}</div>
+              </div>
+              <div class="columns">
+                <div class="column is-4 pt-0">
+                  <i class="fas fa-chevron-right"></i>
+                  <strong>Gas Used</strong>
+                </div>
+                <div class="column is-8 pt-0">{{this.txnGas}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

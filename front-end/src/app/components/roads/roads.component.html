@@ -1,1 +1,163 @@
-<p>roads works!</p>
+<section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column page-left page-add-vehicles">
+          <h1 class="is-size-1 is-font-poppins">
+            ADD NEW ROAD
+          </h1>
+          <div class="card card-form-add">
+            <div class="card-content">
+              <div class="columns">
+                <div class="column">
+                  <div class="field">
+                    <label class="label font-is-roboto">Road Start Point</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="text" placeholder="location" [(ngModel)]="roadStart"/>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-map-marker-alt"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label font-is-roboto">Road End Point</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="text" placeholder="location" [(ngModel)]="roadEnd"/>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-map-marker-alt"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <div class="field">
+                    <label class="label font-is-roboto"> Contract Amount</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="number" placeholder="amount" [(ngModel)]="roadContractAmount"/>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-rupee-sign"></i>
+                      </span>
+                    </div>
+                    <p class="help">Note: This value once set, cannot be changed.</p>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label font-is-roboto">Duration of the contract</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="text" placeholder="in years-months" [(ngModel)]="roadContractDuration"/>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-clock"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="columns is-vcentered">
+                <div class="column is-2">
+                  <h1 class="is-size-5 font-is-roboto">CHARGES</h1>
+                </div>
+                <div class="column is-10">
+                  <hr class="rule">
+                </div>
+              </div>
+              
+              
+              <div class="columns">
+                <div class="column">
+                  <div class="field">
+                    <label class="label font-is-roboto">Car</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="number" placeholder="amount" [(ngModel)]="carCharge"/>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-rupee-sign"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label font-is-roboto">Truck</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="number" placeholder="amount" [(ngModel)]="truckCharge"/>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-rupee-sign"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label font-is-roboto">Bus</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="number" placeholder="amount" [(ngModel)]="busCharge"/>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-rupee-sign"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="field">
+                <p class="control">
+                  <button class="button" (click)="addRoad()" >
+                    Add
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="notification is-success" id="success-notification">
+            <button class="delete"(click)="hideNotifications()"></button>
+            <p>
+              Successful
+            </p>
+          </div>
+          <div class="notification is-success" id="fail-notification">
+            <button class="delete"(click)="hideNotifications()"></button>
+            <p>
+              Failed
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <h1 class="is-size-1 is-font-poppins" id="myvehicles">
+            MY ROADS
+          </h1>
+          <div class="vehicle-cards">
+            <div class="card card-form" *ngFor="let r of myRoads;let i=index;">
+              <div class="card-content">
+                <div class="columns is-vcentered">
+                  <div class="column is-3 is-v-icon has-text-centered">
+                    <i class="fas fa-road vehicle-icons"></i>
+                  </div>
+                  <div class="column is-6">
+                  <h1 class="is-size-5">{{r.road_start_point}} to {{r.road_end_point}}</h1>
+                    
+                    <h1 class="is-size-6"><i class="fas fa-angle-right"></i> {{r.road_contract_duration}} Year Contract</h1>
+                    <h1 class="is-size-6"><i class="fas fa-angle-right"></i> <i class="fas fa-rupee-sign"></i>{{r.road_collection}} Collected</h1>
+                    <h1 class="is-size-6"><i class="fas fa-angle-right"></i> <i class="fas fa-rupee-sign"></i>{{r.road_contract_amount-r.road_collection}} Remaining</h1>
+                    <button class="button is-small is-link booths" (click)="showBooths(r.road_id)">Booths</button>
+                  </div>
+                  <div class="column is-3 has-text-centered">
+                    <a (click)="deleteRoad(r.road_id)"
+                      ><i
+                        class="far fa-times-circle vehicle-icons close-icon"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

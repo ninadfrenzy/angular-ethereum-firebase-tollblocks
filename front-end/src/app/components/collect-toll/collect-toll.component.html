@@ -1,1 +1,130 @@
-<p>collect-toll works!</p>
+<section class="section" *ngIf="!isBoothLoggedIn">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4">
+        <h1 class="is-size-5">Enter Your Credentials</h1>
+        <div class="card card-form">
+          <div class="card-content">
+            <div class="field">
+              <label class="label font-is-roboto">Booth Username</label>
+              <div class="control has-icons-left">
+                <input class="input" type="text" placeholder="ID" [(ngModel)]="boothUname" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-address-card"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label font-is-roboto">Booth Password</label>
+              <div class="control has-icons-left">
+                <input class="input" type="password" placeholder="Password" [(ngModel)]="boothPwd" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-key"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <p class="control">
+                <button class="button" (click)="loginBooth()">
+                  Log In
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section page-form" *ngIf="isBoothLoggedIn">
+  <!-- !!!!!!!!!!!!!!!!!!!!   Heading + notification + subheading !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6 is-offset-3">
+        <h1 class="is-size-1 font-is-poppins">COLLECT TOLL</h1>
+      </div>
+      <div class="column is-3">
+        <div class="notification is-success" id="success-notification">
+          <button class="delete" (click)="hideNotification()" ></button>
+          <p>
+            Successful
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- !!!!!!!!!!!!!!!!!!!!   Main Card  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <div class="card card-form">
+          <div class="card-content">
+            <div class="field">
+              <label class="label font-is-roboto">Vehicle ID</label>
+              <div class="control has-icons-left">
+                <input class="input" type="text" placeholder="ID" [(ngModel)]="vehicleId"/>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-address-card"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <p class="control">
+                <button class="button" (click)="collectToll()">
+                  Collect
+                </button>
+                <button class="button" (click) = "logoutBooth()">
+                    Log Out
+                  </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section page-reciept" *ngIf="isBoothLoggedIn">
+  <!-- !!!!!!!!!!!!!!!!!!!!   Reciept section  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <h1 class="is-size-2 is-font-poppins">RECIEPT</h1>
+        <div class="card">
+          <div class="card-title"></div>
+          <div class="card-content">
+            <div class="columns">
+              <div class="column is-4">
+                <i class="fas fa-chevron-right"></i>
+                <strong>Txn Sender</strong>
+              </div>
+              <div class="column is-8">Ninad Manjaramkar</div>
+            </div>
+            <div class="columns">
+              <div class="column is-4 pt-0">
+                <i class="fas fa-chevron-right"></i>
+                <strong>Txn Reciever</strong>
+              </div>
+              <div class="column is-8 pt-0">Sachin Tendulkar</div>
+            </div>
+            <div class="columns">
+              <div class="column is-4 pt-0">
+                <i class="fas fa-chevron-right"></i>
+                <strong>Txn Hash</strong>
+              </div>
+              <div class="column is-8 pt-0">JKBSDASGHEJABSDBSADAJSKNKJ</div>
+            </div>
+            <div class="columns">
+              <div class="column is-4 pt-0">
+                <i class="fas fa-chevron-right"></i>
+                <strong>Total Cost</strong>
+              </div>
+              <div class="column is-8 pt-0">75.03</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

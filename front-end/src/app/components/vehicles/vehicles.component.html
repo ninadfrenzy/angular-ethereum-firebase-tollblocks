@@ -1,1 +1,131 @@
-<p>vehicles works!</p>
+<section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column page-left page-add-vehicles">
+          <h1 class="is-size-1 is-font-poppins">
+            ADD NEW VEHICLE
+          </h1>
+          <div class="card card-form-add">
+            <div class="card-content">
+              <div class="field">
+                <label class="label font-is-roboto">Vehicle Name</label>
+                <div class="control ">
+                  <input class="input" type="text" placeholder="amount" [(ngModel)]="vehicleName"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label font-is-roboto">Vehicle ID</label>
+                <div class="control ">
+                  <input class="input" type="text" placeholder="amount" [(ngModel)]="vehicleId"/>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <label class="radio">
+                    <input type="radio" name="answer" [(ngModel)]="vehicleType" value="car"/>
+                    Car
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="answer" [(ngModel)]="vehicleType" value="truck"/>
+                    Truck
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="answer" [(ngModel)]="vehicleType" value="bus"/>
+                    Bus
+                  </label>
+                </div>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button" (click)="addVehicle()">
+                    Add
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="notification is-success" id="success-notification">
+            <button class="delete" (click)="hideNotification()"></button>
+            <p>
+              Successful
+            </p>
+          </div>
+          <div class="notification is-danger" id="fail-notification">
+            <button class="delete" (click)="hideNotification()"></button>
+            <p>
+             Failed
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <h1 class="is-size-1 is-font-poppins" id="myvehicles">
+            MY VEHICLES
+          </h1>
+          <div class="vehicle-cards">
+            <div class="card card-form" *ngFor="let v of myVehicles;let i=index;">
+              <div class="card-content">
+                <div class="columns is-vcentered">
+                  <div class="column is-3 is-v-icon has-text-centered">
+                    <i class="fas fa-car vehicle-icons" *ngIf="v.vehicle_type == 'car'"></i>
+                    <i class="fas fa-bus-alt vehicle-icons" *ngIf="v.vehicle_type == 'bus'"></i>
+                    <i class="fas fa-truck vehicle-icons" *ngIf="v.vehicle_type == 'truck'"></i>
+                  </div>
+                  <div class="column is-6">
+                    <h1 class="is-size-5">{{v.vehicle_name}}</h1>
+                    <h1 class="is-size-5">{{v.vehicle_id}}</h1>
+                  </div>
+                  <div class="column is-3 has-text-centered">
+                    <a (click)="deleteVehicle(v.vehicle_id)"
+                      ><i
+                        class="far fa-times-circle vehicle-icons close-icon"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="card card-form">
+              <div class="card-content">
+                <div class="columns is-vcentered">
+                  <div class="column is-3 is-v-icon has-text-centered">
+                    <i class="fas fa-truck vehicle-icons"></i>
+                  </div>
+                  <div class="column is-6">
+                    <h1 class="is-size-5">Mahindra Enos</h1>
+                    <h1 class="is-size-5">MH 23 EN 4657</h1>
+                  </div>
+                  <div class="column is-3 has-text-centered">
+                    <a
+                      ><i
+                        class="far fa-times-circle vehicle-icons close-icon"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card card-form">
+              <div class="card-content">
+                <div class="columns is-vcentered">
+                  <div class="column is-3 is-v-icon has-text-centered">
+                    <i class="fas fa-bus-alt vehicle-icons"></i>
+                  </div>
+                  <div class="column is-6">
+                    <h1 class="is-size-5">Mahindra Enos</h1>
+                    <h1 class="is-size-5">MH 23 EN 4657</h1>
+                  </div>
+                  <div class="column is-3 has-text-centered">
+                    <a
+                      ><i
+                        class="far fa-times-circle vehicle-icons close-icon"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

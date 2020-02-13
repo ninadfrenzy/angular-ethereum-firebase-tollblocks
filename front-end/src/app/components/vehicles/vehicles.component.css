@@ -1,0 +1,54 @@
+.button{
+    background-color: rgb(52, 52, 228);
+    color: white;
+    
+}
+.card-form{
+    box-shadow: 5px 5px 20px grey;
+    margin: 1rem;
+}
+.card-form-add{
+    box-shadow: 5px 5px 20px grey;
+    margin-top: 1rem;
+}
+.font-is-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+.font-is-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+.font-is-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+h1{
+    font-weight: bold;
+    
+}
+.page-reciept {
+    padding-top: 1.5rem;
+}
+.pt-0{
+    padding-top: 0;
+}
+.is-v-icon{
+    
+}
+.notification{
+    margin-top: 1rem;
+}
+.vehicle-icons{
+    font-size: 200%;
+    margin: 1.5rem 1.5rem;
+}
+.vehicle-cards{
+    margin:1rem;
+}
+#myvehicles{
+    margin-left: 1.7rem;
+}
+.close-icon{
+    color: red;
+}
+.notification{
+    display: none;
+}

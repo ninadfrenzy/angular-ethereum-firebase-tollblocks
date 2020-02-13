@@ -5,6 +5,11 @@ import { MockComponent } from './components/mock/mock.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardConnectorComponent } from './components/dashboard-connector/dashboard-connector.component';
+import { RechargeComponent } from './components/recharge/recharge.component';
+import { VehiclesComponent } from './components/vehicles/vehicles.component';
+import { RoadsComponent } from './components/roads/roads.component';
+import { BoothsComponent } from './components/booths/booths.component';
+import { CollectTollComponent } from './components/collect-toll/collect-toll.component';
 
 
 const routes: Routes = [
@@ -23,7 +28,27 @@ const routes: Routes = [
   {
     path: 'dash',
     component: DashboardConnectorComponent
-  }
+  },
+  {
+    path: 'recharge',
+    component: RechargeComponent
+  },
+  {
+    path: 'add-vehicles',
+    component: VehiclesComponent
+  },
+  {
+    path: 'add-roads',
+    component: RoadsComponent
+  },
+  {
+    path: 'booths',
+    component: BoothsComponent
+  },
+  {
+    path: 'collect-toll',
+    component: CollectTollComponent
+  },
 
 ];
 
