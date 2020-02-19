@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlockchainAccessService } from 'src/app/services/blockchain-access.service';
 import { FirebaseAuthenticationService } from 'src/app/services/firebase-authentication.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-recharge',
@@ -18,7 +19,7 @@ export class RechargeComponent implements OnInit {
   txnReciever: any;
   txnHash: any;
   txnGas: any;
-  constructor(public eth:BlockchainAccessService, public authService:FirebaseAuthenticationService) {
+  constructor(public eth:BlockchainAccessService, public authService:FirebaseAuthenticationService, private afFirestore:AngularFirestore) {
      
     this.initEth();
     
@@ -73,6 +74,15 @@ export class RechargeComponent implements OnInit {
       this.txnReciever = data['receipt']['from'];
       this.txnHash = data['receipt']['transactionHash'];
       this.txnGas = data['receipt']['gasUsed'];
+      let txn = {
+        sender: this.txnSender,
+        reciever: this.txnReciever,
+        hash: this.txnHash,
+        gas: this.txnGas,
+        user_id: this.uid,
+        type: 'recharge'
+      }
+      this.afFirestore.collection('transactions').add(txn);
       this.eth.getBalance(this.uid).then(data=>{
         if(data){
           this.previousAmount=data['value'];

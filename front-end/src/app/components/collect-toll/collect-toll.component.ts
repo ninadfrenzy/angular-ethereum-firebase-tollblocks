@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { sha256 } from 'js-sha256'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BlockchainAccessService } from 'src/app/services/blockchain-access.service';
+import { parse } from 'querystring';
 @Component({
   selector: 'app-collect-toll',
   templateUrl: './collect-toll.component.html',
@@ -75,7 +76,7 @@ export class CollectTollComponent implements OnInit {
       this.eth.getBoothCollection(this.currentBooth['booth_id']).then(data => {
         let boothCollection = data['value'];
         this.afFirestore.collection('booths').doc(this.currentBooth['booth_id']).update({
-          booth_collection: boothCollection
+          booth_collection: parseInt(boothCollection)
         }).then(()=>{
           console.log('done');
           
@@ -85,13 +86,44 @@ export class CollectTollComponent implements OnInit {
       this.eth.getRoadCollection(this.currentBooth['road_id']).then((data) => {
         let roadCollection = data['value'];
         this.afFirestore.collection('roads').doc(this.currentBooth['road_id']).update({
-          road_collection: roadCollection
+          road_collection: parseInt(roadCollection)
         }).then(() => {
           console.log('done');
           
         })
         
       })
+      //make a txn and store it
+
+      if(data) {
+        let txnReciept = data['status']['receipt'];
+        let txnForAuthority = {
+          sender: txnReciept['from'],
+          reciever: txnReciept['to'],
+          hash: txnReciept['transactionHash'],
+          gas: txnReciept['gasUsed'],
+          user_id: this.currentBooth['user_id'],
+          type: 'toll collection'
+        }
+        this.afFirestore.collection('transactions').add(txnForAuthority).then(()=>{
+
+        })
+        this.afFirestore.collection('vehicles').doc(sha256(this.vehicleId)).valueChanges().subscribe(op => {
+          let txnForCustomer = {
+            sender: txnReciept['from'],
+            reciever: txnReciept['to'],
+            hash: txnReciept['transactionHash'],
+            gas: txnReciept['gasUsed'],
+            user_id: op['user_id'],
+            type: 'toll collection'
+          }
+          this.afFirestore.collection('transactions').add(txnForCustomer).then(()=>{
+
+          })
+        })
+      }
+      
+
     })
   }
   hideNotification() {

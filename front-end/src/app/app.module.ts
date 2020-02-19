@@ -25,6 +25,7 @@ import { BoothsComponent } from './components/booths/booths.component';
 import { DashboardConnectorComponent } from './components/dashboard-connector/dashboard-connector.component';
 import { Ng2OdometerModule } from 'ng2-odometer';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SplashComponent } from './components/splash/splash.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CollectTollComponent,
     BoothsComponent,
     DashboardConnectorComponent,
-    NavbarComponent
+    NavbarComponent,
+    SplashComponent
   ],
   imports: [
     BrowserModule,

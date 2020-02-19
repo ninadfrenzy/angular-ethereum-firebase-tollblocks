@@ -10,9 +10,14 @@ import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { RoadsComponent } from './components/roads/roads.component';
 import { BoothsComponent } from './components/booths/booths.component';
 import { CollectTollComponent } from './components/collect-toll/collect-toll.component';
+import { SplashComponent } from './components/splash/splash.component';
 
 
 const routes: Routes = [
+  {
+    path: '',
+    component: SplashComponent
+  },
   {
     path: 'login',
     component: LoginComponent

@@ -15,6 +15,7 @@ export class DashboardAuthorityComponent implements OnInit {
   uid:string='';
   user:any=null;
   collected:number = 0;
+  transactions:Array<any>=[];
   constructor(private authService:FirebaseAuthenticationService, private eth:BlockchainAccessService, public router:Router, private afFirestore:AngularFirestore) { }
 
   ngOnInit() {
@@ -28,7 +29,11 @@ export class DashboardAuthorityComponent implements OnInit {
           }
           this.collected = coll;
         }
+
         
+      })
+      this.afFirestore.collection('transactions',ref=>ref.where('user_id','==',this.uid)).valueChanges().subscribe(data => {
+        this.transactions = data;
       })
     })
 

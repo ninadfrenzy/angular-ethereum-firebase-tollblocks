@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <section class="hero main-part is-medium is-link">
     <div class="container has-text-centered center-container">
       <h1 class="is-size-1 title-text"><i class="fas fa-rupee-sign"></i> <ng2-odometer [number]="currentBalance" [config]="{}"></ng2-odometer></h1>
@@ -5,6 +6,39 @@
       <div class="buttons">
         <button class="button is-rounded is-outlined" (click)="router.navigateByUrl('add-vehicles')">Add vehicle</button>
         <button class="button is-rounded is-outlined" (click)="router.navigateByUrl('recharge')">+ Recharge</button>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container has-text-centered">
+      <div class="card card-txns" *ngFor="let txn of transactions;let i=index;">
+        <div class="columns is-vcentered">
+          <div class="column is-2">
+            <i class="fas fa-align-left txn-icon"></i>
+          </div>
+          <div class="column is-10">
+            <div class="columns is-centered">
+              <div class="column is-2 has-text-left title-text" id="top">Sender</div>
+            <div class="column is-10 has-text-left text-small" id="top">{{txn.sender}}</div>
+            </div>
+            <div class="columns is-centered">
+              <div class="column is-2 has-text-left title-text">Reciever</div>
+            <div class="column is-10 has-text-left text-small">{{txn.reciever}}</div>
+            </div>
+            <div class="columns is-centered">
+              <div class="column is-2 has-text-left title-text">Hash</div>
+              <div class="column is-10 has-text-left text-small">{{txn.hash}}</div>
+            </div>
+            <div class="columns is-centered">
+              <div class="column is-2 has-text-left title-text">Gas</div>
+              <div class="column is-10 has-text-left text-small">{{txn.gas}}</div>
+            </div>
+            <div class="columns is-centered">
+              <div class="column is-2 has-text-left title-text" id="btm">Type</div>
+              <div class="column is-10 has-text-left text-small" id="btm">{{txn.type}}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

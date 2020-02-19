@@ -10,3 +10,23 @@
 .title-text{
     font-weight: bold;
 }
+.has-text-left{
+    padding: 0.1rem;
+}
+.txn-icon{
+    font-size: 200%;
+}
+.text-small{
+    font-size: 80%;
+    font-family: 'Source Code Pro', monospace;
+}
+.card-txns{
+    margin: 2rem;
+    box-shadow: 10px 10px 20px grey;
+}
+#top{
+    padding-top: 0.5rem;
+}
+#btm{
+    padding-bottom: 0.5rem;
+}

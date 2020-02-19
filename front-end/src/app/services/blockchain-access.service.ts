@@ -17,18 +17,30 @@ export class BlockchainAccessService {
     if (typeof window.web3 !== "undefined") {
       this.web3Prov = window.web3.currentProvider;
     } else {
+      //Ganache provider is at 7545 enable this when using ganache and comment out geth
       this.web3Prov = 'http://127.0.0.1:7545'
+
+      //Geth provider
+      //this.web3Prov = 'http://127.0.0.1:8645'
+      
     }
     window.web3 = new Web3(this.web3Prov);
+
   }
 
   getAccountInfo() {
     return new Promise(function(resolve, reject) {
+      console.log('getting accs');
+      
       window.web3.eth.getCoinbase(function(err, account) {
         if (err === null) {
+          console.log('acc' ,account);
+          
           window.web3.eth.getBalance(account, function(err, balance) {
             if (err === null) {
               //console.log(balance);
+              console.log(balance);
+              
               return resolve({
                 fromAccount: account,
                 balance: window.web3.utils.fromWei(balance, "ether")
@@ -117,6 +129,8 @@ export class BlockchainAccessService {
     });
   }
   validateAndCollect(_roadId, _vehicleId, _boothId, fromAdr) {
+    console.log('here');
+    
     let that = this;
     return new Promise((resolve, reject) => {
       let contractVar = TruffleContract(tokenAbi);
@@ -130,7 +144,7 @@ export class BlockchainAccessService {
           return resolve({ status: data });
         })
         .catch(err => {
-          return reject({ errormsg: "error to add" });
+          return reject({ errormsg: err });
         });
     });
   }
