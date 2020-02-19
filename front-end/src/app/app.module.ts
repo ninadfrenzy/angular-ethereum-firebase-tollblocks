@@ -26,6 +26,7 @@ import { DashboardConnectorComponent } from './components/dashboard-connector/da
 import { Ng2OdometerModule } from 'ng2-odometer';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SplashComponent } from './components/splash/splash.component';
+import { Err404Component } from './components/err404/err404.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SplashComponent } from './components/splash/splash.component';
     BoothsComponent,
     DashboardConnectorComponent,
     NavbarComponent,
-    SplashComponent
+    SplashComponent,
+    Err404Component
   ],
   imports: [
     BrowserModule,

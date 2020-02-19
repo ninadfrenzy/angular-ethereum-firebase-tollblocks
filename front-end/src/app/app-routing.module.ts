@@ -11,6 +11,10 @@ import { RoadsComponent } from './components/roads/roads.component';
 import { BoothsComponent } from './components/booths/booths.component';
 import { CollectTollComponent } from './components/collect-toll/collect-toll.component';
 import { SplashComponent } from './components/splash/splash.component';
+import { GuardCustomerService } from './services/guard-customer.service';
+import { Err404Component } from './components/err404/err404.component';
+import { GuardAuthorityService } from './services/guard-authority.service';
+import { GuardGenericService } from './services/guard-generic.service';
 
 
 const routes: Routes = [
@@ -24,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: 'mock',
-    component: MockComponent
+    component: MockComponent,
+    
   },
   {
     path: 'signup',
@@ -32,28 +37,38 @@ const routes: Routes = [
   },
   {
     path: 'dash',
-    component: DashboardConnectorComponent
+    component: DashboardConnectorComponent,
+    canActivate: [GuardGenericService]
   },
   {
     path: 'recharge',
-    component: RechargeComponent
+    component: RechargeComponent,
+    canActivate: [GuardCustomerService]
   },
   {
     path: 'add-vehicles',
-    component: VehiclesComponent
+    component: VehiclesComponent,
+    canActivate: [GuardCustomerService]
   },
   {
     path: 'add-roads',
-    component: RoadsComponent
+    component: RoadsComponent,
+    canActivate: [GuardAuthorityService]
   },
   {
     path: 'booths',
-    component: BoothsComponent
+    component: BoothsComponent,
+    canActivate: [GuardAuthorityService]
   },
   {
     path: 'collect-toll',
     component: CollectTollComponent
   },
+  {
+    path: 'route-not-found',
+    component: Err404Component
+  },
+
 
 ];
 
