@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore';
 
+/* 
+LOGIN COMPONENT
+- implements login functionality, by simply using a method on firebase auth which checks existence of a registered user and returns a reference to that user if found.
+*/
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +15,7 @@ export class LoginComponent implements OnInit {
   email:string = '';
   password:string = '';
   
-  constructor(private afAuth:AngularFireAuth, public router: Router, private afFirestore: AngularFirestore) { }
+  constructor(private afAuth:AngularFireAuth, public router: Router) { }
 
   ngOnInit() {
   }
@@ -25,6 +28,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('dash');
         }
       }).catch(err => {
+        console.log('error in logging user in', err);
         document.getElementById('notification-fail').style.display = 'block';
       })
     

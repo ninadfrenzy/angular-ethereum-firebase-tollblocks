@@ -23,7 +23,7 @@ export class GuardGenericService {
         if(userId) {
           return resolve(true)
         } else {
-          this.router.navigateByUrl('route-not-found')
+          this.router.navigateByUrl('login')
           return reject(false)
         }
       })

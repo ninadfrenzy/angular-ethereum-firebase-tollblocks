@@ -43,22 +43,22 @@ const routes: Routes = [
   {
     path: 'recharge',
     component: RechargeComponent,
-    canActivate: [GuardCustomerService]
+    canActivate: [GuardGenericService]
   },
   {
     path: 'add-vehicles',
     component: VehiclesComponent,
-    canActivate: [GuardCustomerService]
+    canActivate: [GuardGenericService]
   },
   {
     path: 'add-roads',
     component: RoadsComponent,
-    canActivate: [GuardAuthorityService]
+    canActivate: [GuardGenericService]
   },
   {
     path: 'booths',
     component: BoothsComponent,
-    canActivate: [GuardAuthorityService]
+    canActivate: [GuardGenericService]
   },
   {
     path: 'collect-toll',

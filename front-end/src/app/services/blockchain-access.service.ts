@@ -30,16 +30,14 @@ export class BlockchainAccessService {
 
   getAccountInfo() {
     return new Promise(function(resolve, reject) {
-      console.log('getting accs');
       
       window.web3.eth.getCoinbase(function(err, account) {
         if (err === null) {
-          console.log('acc' ,account);
+          
           
           window.web3.eth.getBalance(account, function(err, balance) {
             if (err === null) {
-              //console.log(balance);
-              console.log(balance);
+
               
               return resolve({
                 fromAccount: account,

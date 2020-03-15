@@ -18,12 +18,14 @@ export class DashboardCustomerComponent implements OnInit {
   ngOnInit() {
     this.authService.uid.subscribe(uid=> {
       this.uid = uid;
-      this.eth.getBalance(this.uid).then(data=> {
-        if(data) {
-          this.currentBalance = data['value']
-        }
-        
-      })
+      if(this.uid) {
+        this.eth.getBalance(this.uid).then(data=> {
+          if(data) {
+            this.currentBalance = data['value']
+          }
+          
+        })
+      }
       this.afFirestore.collection('transactions', ref => ref.where('user_id','==',this.uid)).valueChanges().subscribe(data => {
         this.transactions = data;
       })

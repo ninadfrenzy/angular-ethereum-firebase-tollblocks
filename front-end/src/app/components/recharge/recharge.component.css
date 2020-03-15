@@ -31,6 +31,9 @@ h1{
 #success-recharge{
     display: none;
 }
+#fail-recharge{
+    display: none;
+}
 #reciept{
     display: none;
 }

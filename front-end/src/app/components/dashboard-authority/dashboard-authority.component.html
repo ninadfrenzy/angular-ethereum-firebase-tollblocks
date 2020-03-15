@@ -2,10 +2,10 @@
 <section class="hero main-part is-medium is-link">
     <div class="container has-text-centered center-container">
       <h1 class="is-size-1 title-text"><i class="fas fa-rupee-sign"></i> <ng2-odometer [number]="collected" [config]="{}"></ng2-odometer></h1>
-      <h1 class="is-size-3">Balance</h1>
-      <div class="buttons">
+      <h1 class="is-size-3">Collection</h1>
+      <div class="buttons" id="road-button">
         <button class="button is-rounded is-outlined" (click)="router.navigateByUrl('add-roads')">Roads</button>
-        <button class="button is-rounded is-outlined" (click)="router.navigateByUrl('add-roads')">Booths</button>
+        
       </div>
     </div>
   </section>
