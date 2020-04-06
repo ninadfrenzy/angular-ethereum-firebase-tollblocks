@@ -49,8 +49,8 @@ module.exports = {
     },
     geth: {
       host: "127.0.0.1",
-      gas: 5000000,
-      network_id: "1234",
+      gas: 4000000,
+      network_id: "*",
       port: 8645
     }
 

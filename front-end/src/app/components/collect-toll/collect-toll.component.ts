@@ -16,6 +16,7 @@ export class CollectTollComponent implements OnInit {
   vehicleId:string = '';
   transferFrom: any;
   bal: any;
+  transactionDone: any;
   constructor(private afFirestore:AngularFirestore, private eth:BlockchainAccessService) { 
     this.initEth();
   }
@@ -105,6 +106,7 @@ export class CollectTollComponent implements OnInit {
           user_id: this.currentBooth['user_id'],
           type: 'toll collection'
         }
+        this.transactionDone = txnForAuthority;
         this.afFirestore.collection('transactions').add(txnForAuthority).then(()=>{
 
         })

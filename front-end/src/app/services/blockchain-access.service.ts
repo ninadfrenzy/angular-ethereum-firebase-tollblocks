@@ -18,10 +18,10 @@ export class BlockchainAccessService {
       this.web3Prov = window.web3.currentProvider;
     } else {
       //Ganache provider is at 7545 enable this when using ganache and comment out geth
-      this.web3Prov = 'http://127.0.0.1:7545'
+      //this.web3Prov = 'http://127.0.0.1:7545'
 
       //Geth provider
-      //this.web3Prov = 'http://127.0.0.1:8645'
+      this.web3Prov = 'http://127.0.0.1:8645'
       
     }
     window.web3 = new Web3(this.web3Prov);

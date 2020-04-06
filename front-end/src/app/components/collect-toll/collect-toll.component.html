@@ -87,9 +87,9 @@
 </section>
 <section class="section page-reciept" *ngIf="isBoothLoggedIn">
   <!-- !!!!!!!!!!!!!!!!!!!!   Reciept section  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-  <div class="container">
+  <div class="container" *ngIf="transactionDone">
     <div class="columns is-centered">
-      <div class="column is-6">
+      <div class="column is-8">
         <h1 class="is-size-2 is-font-poppins">RECIEPT</h1>
         <div class="card">
           <div class="card-title"></div>
@@ -99,28 +99,28 @@
                 <i class="fas fa-chevron-right"></i>
                 <strong>Txn Sender</strong>
               </div>
-              <div class="column is-8">Ninad Manjaramkar</div>
+              <div class="column is-8">{{this.transactionDone['sender']}}</div>
             </div>
             <div class="columns">
               <div class="column is-4 pt-0">
                 <i class="fas fa-chevron-right"></i>
                 <strong>Txn Reciever</strong>
               </div>
-              <div class="column is-8 pt-0">Sachin Tendulkar</div>
+              <div class="column is-8 pt-0">{{this.transactionDone['reciever']}}</div>
             </div>
             <div class="columns">
               <div class="column is-4 pt-0">
                 <i class="fas fa-chevron-right"></i>
                 <strong>Txn Hash</strong>
               </div>
-              <div class="column is-8 pt-0">JKBSDASGHEJABSDBSADAJSKNKJ</div>
+              <div class="column is-8 pt-0" style="overflow-wrap: break-word;">{{this.transactionDone['hash']}}</div>
             </div>
             <div class="columns">
               <div class="column is-4 pt-0">
                 <i class="fas fa-chevron-right"></i>
                 <strong>Total Cost</strong>
               </div>
-              <div class="column is-8 pt-0">75.03</div>
+              <div class="column is-8 pt-0">{{this.transactionDone['gas']}}</div>
             </div>
           </div>
         </div>
